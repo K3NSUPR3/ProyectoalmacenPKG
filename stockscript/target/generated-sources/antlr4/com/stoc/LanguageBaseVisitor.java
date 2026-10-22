@@ -52,7 +52,14 @@ public class LanguageBaseVisitor<T> extends AbstractParseTreeVisitor<T> implemen
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCondicion(LanguageParser.CondicionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCondicion_activada(LanguageParser.Condicion_activadaContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitCondicion_desactivada(LanguageParser.Condicion_desactivadaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

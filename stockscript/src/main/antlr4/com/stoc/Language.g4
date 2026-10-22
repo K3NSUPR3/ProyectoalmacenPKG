@@ -6,8 +6,9 @@ instruccion:
 	declaracion OP_CIERRE?
 	| asignacion OP_CIERRE?
 	| impresion OP_CIERRE?
-	| condicion
-	| ciclo
+	| condicion_activada OP_CIERRE
+	| condicion_desactivada OP_CIERRE
+	| ciclo OP_CIERRE
 	| comparacion OP_CIERRE?
 	| expresion OP_CIERRE?;
 
@@ -20,21 +21,26 @@ asignacion:
 impresion:
 	PRINT PAR_CLOSEL (comparacion | expresion) PAR_CLOSER;
 
-condicion:
-	RESERVA_IBOX (estructura_de_condicion)* //IF ELSE IF & ELSE
+condicion_activada:
+	VERDADERO RESERVA_IBOX (estructura_de_condicion)* //IF ELSE IF & ELSE
 	| RESERVA_EIBOX (estructura_de_condicion)* (
 		RESERVA_EBOX (LL_CLOSEL instruccion* LL_CLOSER)? //OPCIONAL ELSE
+	)?;
+
+condicion_desactivada:
+	FALSO RESERVA_IBOX (estructura_de_condicion)*
+	| RESERVA_EIBOX (estructura_de_condicion)* (
+		RESERVA_EBOX (LL_CLOSEL instruccion* LL_CLOSER)?
 	)?;
 
 estructura_de_condicion:
 	PAR_CLOSEL comparacion PAR_CLOSER LL_CLOSEL instruccion* LL_CLOSER;
 
 ciclo:
-	FOR (declaracion) ALMACENADOR (comparacion | expresion)? ALMACENADOR (
-		asignacion
-		| expresion
-	)? PAR_CLOSEL LL_CLOSEL instruccion* LL_CLOSER
-	| WHILE PAR_CLOSEL comparacion PAR_CLOSER LL_CLOSEL instruccion* LL_CLOSER;
+	AUTO (
+		CO_CLOSEL condicion_activada CO_CLOSER ALMACENADOR CO_CLOSEL INCREMENTO
+		| DECREMENTO CO_CLOSER CO_CLOSEL INICIALIZADOR_AUTO CO_CLOSER
+	);
 
 comparacion:
 	expresion (
@@ -68,13 +74,13 @@ tipo:
 
 BOOLEAN: 'true' | 'false';
 STRING_LITERAL: '"' (~["\r\n])* '"';
-CHARACTERES: '\'' . '\'';
-ID_CON_ASIGNACION:
-	ID ASIG (LOTE | PROM | BOOLEAN | CHARACTERES);
+MINI: '\'' . '\'';
+ID_CON_ASIGNACION: ID ASIG (LOTE | PROM | BOOLEAN | MINI);
 
 //definicion 
 PROM: [0-9]+ '.' [0-9]+;
 LOTE: [0-9]+;
+AUTO: 'auto';
 
 //Valores Minimos
 OBJECT: 'ChupapiStorage';
@@ -85,8 +91,11 @@ BOOL: 'palanca';
 FLOAT: 'prom';
 
 // Valores booleanos 
-FALSO: 'IZQ';
-VERDADERO: 'DER';
+FALSO: '[0]';
+VERDADERO: '[1]';
+
+BOOL_DER: 'der';
+BOOL_IZQ: 'izq';
 
 // Instrucciones 
 PRINT: 'etiquetadora';
@@ -110,7 +119,8 @@ OP_SUM: '+';
 OP_RES: '-';
 OP_MUL: '*';
 OP_DIV: '/';
-OP_CIERRE: ';';
+OP_CIERRE: ':';
+OP_PUNTOCOMA: ';';
 OP_MAYORQ: '>';
 OP_MENORQ: '<';
 
@@ -131,6 +141,10 @@ CONCATENACION: '<+>';
 //5. DELIMITADORES 
 LL_CLOSEL: '{';
 LL_CLOSER: '}';
+CO_CLOSEL: '[';
+CO_CLOSER: ']';
+
+INICIALIZADOR_AUTO: 'a';
 
 //incremento y decremento
 INCREMENTO: '++';

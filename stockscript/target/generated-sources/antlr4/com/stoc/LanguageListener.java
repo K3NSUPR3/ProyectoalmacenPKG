@@ -58,15 +58,25 @@ public interface LanguageListener extends ParseTreeListener {
 	 */
 	void exitImpresion(LanguageParser.ImpresionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LanguageParser#condicion}.
+	 * Enter a parse tree produced by {@link LanguageParser#condicion_activada}.
 	 * @param ctx the parse tree
 	 */
-	void enterCondicion(LanguageParser.CondicionContext ctx);
+	void enterCondicion_activada(LanguageParser.Condicion_activadaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LanguageParser#condicion}.
+	 * Exit a parse tree produced by {@link LanguageParser#condicion_activada}.
 	 * @param ctx the parse tree
 	 */
-	void exitCondicion(LanguageParser.CondicionContext ctx);
+	void exitCondicion_activada(LanguageParser.Condicion_activadaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LanguageParser#condicion_desactivada}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondicion_desactivada(LanguageParser.Condicion_desactivadaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LanguageParser#condicion_desactivada}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondicion_desactivada(LanguageParser.Condicion_desactivadaContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LanguageParser#estructura_de_condicion}.
 	 * @param ctx the parse tree

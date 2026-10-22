@@ -76,13 +76,25 @@ public class LanguageBaseListener implements LanguageListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCondicion(LanguageParser.CondicionContext ctx) { }
+	@Override public void enterCondicion_activada(LanguageParser.Condicion_activadaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCondicion(LanguageParser.CondicionContext ctx) { }
+	@Override public void exitCondicion_activada(LanguageParser.Condicion_activadaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCondicion_desactivada(LanguageParser.Condicion_desactivadaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCondicion_desactivada(LanguageParser.Condicion_desactivadaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

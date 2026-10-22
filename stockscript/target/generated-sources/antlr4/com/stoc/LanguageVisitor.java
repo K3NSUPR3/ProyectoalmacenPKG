@@ -41,11 +41,17 @@ public interface LanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitImpresion(LanguageParser.ImpresionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LanguageParser#condicion}.
+	 * Visit a parse tree produced by {@link LanguageParser#condicion_activada}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCondicion(LanguageParser.CondicionContext ctx);
+	T visitCondicion_activada(LanguageParser.Condicion_activadaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LanguageParser#condicion_desactivada}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCondicion_desactivada(LanguageParser.Condicion_desactivadaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LanguageParser#estructura_de_condicion}.
 	 * @param ctx the parse tree
