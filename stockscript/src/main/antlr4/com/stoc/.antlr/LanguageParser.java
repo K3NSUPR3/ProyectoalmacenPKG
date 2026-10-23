@@ -1,4 +1,4 @@
-// Generated from c:/Users/conor/Music/ProyectoAlmacenPKD/stockscript/src/main/antlr4/com/stoc/Language.g4 by ANTLR 4.13.1
+// Generated from c:/Users/sonic/Downloads/TEC/Semestre 8/Lenguajes y autómatas 2/ProyectoalmacenPKG/stockscript/src/main/antlr4/com/stoc/Language.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -871,8 +871,8 @@ public class LanguageParser extends Parser {
 		public TerminalNode CO_CLOSEL(int i) {
 			return getToken(LanguageParser.CO_CLOSEL, i);
 		}
-		public Condicion_activadaContext condicion_activada() {
-			return getRuleContext(Condicion_activadaContext.class,0);
+		public Estructura_de_condicionContext estructura_de_condicion() {
+			return getRuleContext(Estructura_de_condicionContext.class,0);
 		}
 		public List<TerminalNode> CO_CLOSER() { return getTokens(LanguageParser.CO_CLOSER); }
 		public TerminalNode CO_CLOSER(int i) {
@@ -904,7 +904,7 @@ public class LanguageParser extends Parser {
 				setState(166);
 				match(CO_CLOSEL);
 				setState(167);
-				condicion_activada();
+				estructura_de_condicion();
 				setState(168);
 				match(CO_CLOSER);
 				setState(169);
@@ -1382,7 +1382,7 @@ public class LanguageParser extends Parser {
 		"\u00a3\u0001\u0000\u0000\u0000\u00a2\u00a0\u0001\u0000\u0000\u0000\u00a3"+
 		"\u00a4\u0005,\u0000\u0000\u00a4\u000f\u0001\u0000\u0000\u0000\u00a5\u00b2"+
 		"\u0005\u0007\u0000\u0000\u00a6\u00a7\u0005-\u0000\u0000\u00a7\u00a8\u0003"+
-		"\n\u0005\u0000\u00a8\u00a9\u0005.\u0000\u0000\u00a9\u00aa\u00054\u0000"+
+		"\u000e\u0007\u0000\u00a8\u00a9\u0005.\u0000\u0000\u00a9\u00aa\u00054\u0000"+
 		"\u0000\u00aa\u00ab\u0005-\u0000\u0000\u00ab\u00ac\u00050\u0000\u0000\u00ac"+
 		"\u00b3\u0001\u0000\u0000\u0000\u00ad\u00ae\u00051\u0000\u0000\u00ae\u00af"+
 		"\u0005.\u0000\u0000\u00af\u00b0\u0005-\u0000\u0000\u00b0\u00b1\u0005/"+

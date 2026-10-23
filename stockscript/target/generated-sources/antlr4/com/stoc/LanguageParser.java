@@ -967,8 +967,8 @@ public class LanguageParser extends Parser {
 		public TerminalNode CO_CLOSEL(int i) {
 			return getToken(LanguageParser.CO_CLOSEL, i);
 		}
-		public Condicion_activadaContext condicion_activada() {
-			return getRuleContext(Condicion_activadaContext.class,0);
+		public Estructura_de_condicionContext estructura_de_condicion() {
+			return getRuleContext(Estructura_de_condicionContext.class,0);
 		}
 		public List<TerminalNode> CO_CLOSER() { return getTokens(LanguageParser.CO_CLOSER); }
 		public TerminalNode CO_CLOSER(int i) {
@@ -1013,7 +1013,7 @@ public class LanguageParser extends Parser {
 				setState(166);
 				match(CO_CLOSEL);
 				setState(167);
-				condicion_activada();
+				estructura_de_condicion();
 				setState(168);
 				match(CO_CLOSER);
 				setState(169);
@@ -1494,7 +1494,7 @@ public class LanguageParser extends Parser {
 		"\u009e\u00a2\7-\2\2\u009f\u00a1\5\4\3\2\u00a0\u009f\3\2\2\2\u00a1\u00a4"+
 		"\3\2\2\2\u00a2\u00a0\3\2\2\2\u00a2\u00a3\3\2\2\2\u00a3\u00a5\3\2\2\2\u00a4"+
 		"\u00a2\3\2\2\2\u00a5\u00a6\7.\2\2\u00a6\21\3\2\2\2\u00a7\u00b4\7\t\2\2"+
-		"\u00a8\u00a9\7/\2\2\u00a9\u00aa\5\f\7\2\u00aa\u00ab\7\60\2\2\u00ab\u00ac"+
+		"\u00a8\u00a9\7/\2\2\u00a9\u00aa\5\20\t\2\u00aa\u00ab\7\60\2\2\u00ab\u00ac"+
 		"\7\66\2\2\u00ac\u00ad\7/\2\2\u00ad\u00ae\7\62\2\2\u00ae\u00b5\3\2\2\2"+
 		"\u00af\u00b0\7\63\2\2\u00b0\u00b1\7\60\2\2\u00b1\u00b2\7/\2\2\u00b2\u00b3"+
 		"\7\61\2\2\u00b3\u00b5\7\60\2\2\u00b4\u00a8\3\2\2\2\u00b4\u00af\3\2\2\2"+

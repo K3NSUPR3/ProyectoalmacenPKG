@@ -21,24 +21,29 @@ asignacion:
 impresion:
 	PRINT PAR_CLOSEL (comparacion | expresion) PAR_CLOSER;
 
-condicion_activada:
-	VERDADERO RESERVA_IBOX (estructura_de_condicion)* //IF ELSE IF & ELSE
-	| RESERVA_EIBOX (estructura_de_condicion)* (
-		RESERVA_EBOX (LL_CLOSEL instruccion* LL_CLOSER)? //OPCIONAL ELSE
-	)?;
+condicion:
+    (
+        RESERVA_IBOX estructura_de_condicion*
+        | RESERVA_EIBOX estructura_de_condicion*
+          (
+              RESERVA_EBOX
+              (LL_CLOSEL instruccion* LL_CLOSER)?
+          )?
+    )
+    ;
 
-condicion_desactivada:
-	FALSO RESERVA_IBOX (estructura_de_condicion)*
-	| RESERVA_EIBOX (estructura_de_condicion)* (
-		RESERVA_EBOX (LL_CLOSEL instruccion* LL_CLOSER)?
-	)?;
+/* Estado para activar o desactivar ciclos (similar a los comentarios) */
+estado_activacion:
+    VERDADERO
+    | FALSO
+    ;
 
 estructura_de_condicion:
-	PAR_CLOSEL comparacion PAR_CLOSER LL_CLOSEL instruccion* LL_CLOSER;
+	PAR_CLOSEL comparacion PAR_CLOSER estado_activacion LL_CLOSEL instruccion* LL_CLOSER ;
 
 ciclo:
 	AUTO (
-		CO_CLOSEL condicion_activada CO_CLOSER ALMACENADOR CO_CLOSEL INCREMENTO
+		CO_CLOSEL comparacion CO_CLOSER ALMACENADOR CO_CLOSEL INCREMENTO
 		| DECREMENTO CO_CLOSER CO_CLOSEL INICIALIZADOR_AUTO CO_CLOSER
 	);
 
