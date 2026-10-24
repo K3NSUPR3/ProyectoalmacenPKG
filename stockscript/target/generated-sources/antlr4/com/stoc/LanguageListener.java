@@ -58,46 +58,6 @@ public interface LanguageListener extends ParseTreeListener {
 	 */
 	void exitImpresion(LanguageParser.ImpresionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LanguageParser#condicion_activada}.
-	 * @param ctx the parse tree
-	 */
-	void enterCondicion_activada(LanguageParser.Condicion_activadaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LanguageParser#condicion_activada}.
-	 * @param ctx the parse tree
-	 */
-	void exitCondicion_activada(LanguageParser.Condicion_activadaContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LanguageParser#condicion_desactivada}.
-	 * @param ctx the parse tree
-	 */
-	void enterCondicion_desactivada(LanguageParser.Condicion_desactivadaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LanguageParser#condicion_desactivada}.
-	 * @param ctx the parse tree
-	 */
-	void exitCondicion_desactivada(LanguageParser.Condicion_desactivadaContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LanguageParser#estructura_de_condicion}.
-	 * @param ctx the parse tree
-	 */
-	void enterEstructura_de_condicion(LanguageParser.Estructura_de_condicionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LanguageParser#estructura_de_condicion}.
-	 * @param ctx the parse tree
-	 */
-	void exitEstructura_de_condicion(LanguageParser.Estructura_de_condicionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LanguageParser#ciclo}.
-	 * @param ctx the parse tree
-	 */
-	void enterCiclo(LanguageParser.CicloContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LanguageParser#ciclo}.
-	 * @param ctx the parse tree
-	 */
-	void exitCiclo(LanguageParser.CicloContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LanguageParser#comparacion}.
 	 * @param ctx the parse tree
 	 */

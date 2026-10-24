@@ -5,13 +5,14 @@ import java.io.IOException;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 public class Main {
 
     private static final String EXTENSION = "lang";
     private static final String DIRBASE = "src/test/resources/";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ReflectiveOperationException {
         String files[] = args.length == 0 ? new String[] { "test." + EXTENSION } : args;
         System.out.println("Dirbase: " + DIRBASE);
         for (String file : files) {
@@ -31,11 +32,15 @@ public class Main {
             });
 
             LanguageParser parser = new LanguageParser(tokens);
-            LanguageParser.StartContext tree = parser.start();
-            LanguageCustomVisitor visitor = new LanguageCustomVisitor();
-            visitor.visit(tree);
+            String entryRule = parser.getRuleNames()[0];
+            ParserRuleContext tree = (ParserRuleContext) parser.getClass()
+                    .getMethod(entryRule)
+                    .invoke(parser);
 
             Trees.inspect(tree, parser);
+
+            LanguageCustomVisitor visitor = new LanguageCustomVisitor();
+            visitor.visit(tree);
 
             System.out.println("FINISH: " + file);
         }
