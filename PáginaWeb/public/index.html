@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Título -->
   <title>StockScript Web · Compilador</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/StockScriptIcon.png">
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
-      <span class="logo">SS</span>
+      <img class="logo" src="assets/StockScriptIcon.png" alt="Logo StockScript">
       <div>
+        <!-- A -->
         <h1>StockScript Web</h1>
         <p>Analizador léxico, sintáctico y semántico en línea</p>
       </div>
@@ -29,16 +32,19 @@
   <main>
     <section id="tutoriales" class="view active">
       <div class="hero">
-        <h2>Bienvenido a StockScript</h2>
-        <p>
-          StockScript es un lenguaje orientado a inventarios. Sus programas terminan cada instrucción con
-          <code>:</code>, usan niveles <code>[a]</code> a <code>[z]</code> para el anidamiento y el pez
-          <code>🐟</code> para separar las partes de un ciclo <code>auto</code>.
-        </p>
-        <div class="hero-actions">
-          <button class="btn primary" data-example="06-hola">Cargar “Hola StockScript”</button>
-          <button class="btn" data-tab="editor">Ir al editor</button>
+        <div class="hero-copy">
+          <h2>Bienvenido a StockScript</h2>
+          <p>
+            StockScript es un lenguaje orientado a inventarios. Sus programas terminan cada instrucción con
+            <code>:</code>, usan niveles <code>[a]</code> a <code>[z]</code> para el anidamiento y el pez
+            <code>🐟</code> para separar las partes de un ciclo <code>auto</code>.
+          </p>
+          <div class="hero-actions">
+            <button class="btn primary" data-example="06-hola">Cargar “Hola StockScript”</button>
+            <button class="btn" data-tab="editor">Ir al editor</button>
+          </div>
         </div>
+        <img class="hero-art" src="assets/StockScript.png" alt="Caja 3D con el nombre StockScript">
       </div>
 
       <div class="tutorial-grid">
@@ -163,6 +169,12 @@ auto [a][i++ 🐟 i &lt;= 3 🐟][1]{
     </section>
   </main>
 
+  <footer class="footer">
+    <img class="footer-logo" src="assets/StockScriptIcon.png" alt="Logo StockScript">
+    <p>StockScript · Compilador para inventarios</p>
+  </footer>
+
   <script src="app.js"></script>
+
 </body>
 </html>
