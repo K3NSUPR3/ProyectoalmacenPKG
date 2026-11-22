@@ -1,0 +1,6 @@
+{
+  "titulo": "01 · Declaraciones y aritmética",
+  "descripcion": "Tipos lote, prom, etiqueta y mini; paréntesis y concatenación.",
+  "categoria": "válido",
+  "contenido": "// Declaracion de variables de inventario\nlote cajas = 10:\nlote unidadesPorCaja = 12:\nprom precioUnitario = 15.5:\netiqueta producto = \"Atun Premium\":\nmini categoria = 'A':\n\n// Calculo aritmetico con parentesis\nlote totalUnidades = (cajas + 2) * unidadesPorCaja:\nprom costoTotal = totalUnidades * precioUnitario:\n\netiquetadora(producto):\netiquetadora(totalUnidades):\netiquetadora(costoTotal):\n"
+}

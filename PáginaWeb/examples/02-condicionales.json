@@ -1,0 +1,6 @@
+{
+  "titulo": "02 · Condicionales e interruptor [0]",
+  "descripcion": "ibox, eibox, iebox, ebox y bloques desactivados con [0].",
+  "categoria": "válido",
+  "contenido": "lote stock = 25:\n\n// Bloque desactivado con [0]: se omite sin generar error\nibox [a](stock > 10)[0]{\n    etiquetadora(\"Este bloque esta comentado y no se ejecuta\"):\n}\n\n// Cadena condicional activa con [1]\nibox [a](stock > 50)[1]{\n    etiquetadora(\"Stock alto\"):\n} eibox [a](stock == 25)[1]{\n    etiquetadora(\"Stock exacto en 25 unidades\"):\n    stock = stock + 5:\n} iebox [a](stock < 10)[1]{\n    etiquetadora(\"Stock critico\"):\n} ebox [a][1]{\n    etiquetadora(\"Stock en rango normal\"):\n}\n\netiquetadora(stock):\n"
+}

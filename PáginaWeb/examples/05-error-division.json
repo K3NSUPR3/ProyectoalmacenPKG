@@ -1,0 +1,6 @@
+{
+  "titulo": "05 · Error: división entre cero",
+  "descripcion": "Error de ejecución marcado en la línea de la expresión.",
+  "categoria": "inválido",
+  "contenido": "lote resultado = 10 / 0:\netiquetadora(resultado):\n"
+}

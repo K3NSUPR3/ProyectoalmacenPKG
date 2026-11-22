@@ -1,0 +1,11 @@
+{
+  "name": "stockscript-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "IDE web para Stockscript usando el compilador Java ANTLR original",
+  "scripts": {
+    "build:java": "node scripts/build-java.js",
+    "start": "npm run build:java && node server.js",
+    "check": "node --check server.js && node --check scripts/build-java.js && node --check public/app.js"
+  }
+}
