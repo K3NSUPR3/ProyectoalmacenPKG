@@ -1,0 +1,66 @@
+1. Ejemplos de Código Válido (Casos de Éxito)Caso Válido A: Declaraciones, tipos de datos, aritmética y etiquetadora
+Prueba todos los tipos del lenguaje (lote, prom, palanca, etiqueta, mini), precedencia de operadores, paréntesis y concatenación.   Plaintext// Declaracion de variables de inventario
+lote cajas = 10:
+lote unidadesPorCaja = 12:
+prom precioUnitario = 15.5:
+etiqueta producto = "Atun Premium":
+mini categoria = 'A':
+
+// Calculo aritmetico con parentesis
+lote totalUnidades = (cajas + 2) * unidadesPorCaja:
+prom costoTotal = totalUnidades * precioUnitario:
+
+etiquetadora(producto):
+etiquetadora(totalUnidades):
+etiquetadora(costoTotal):
+
+=============================================================================================================
+
+Caso Válido B: Condicionales ibox, eibox / iebox, ebox e interruptor [0] (modo comentario)
+Demuestra cómo se evalúa una cadena condicional completa y cómo el interruptor [0] omite un bloque sin generar error.   Plaintextlote stock = 25:
+
+// Bloque desactivado con [0]: funciona como comentario y se omite
+ibox [a](stock > 10)[0]{
+    etiquetadora("Este bloque esta comentado y no se ejecuta"):
+}
+
+// Cadena condicional activa con [1]
+ibox [a](stock > 50)[1]{
+    etiquetadora("Stock alto"):
+} eibox [a](stock == 25)[1]{
+    etiquetadora("Stock exacto en 25 unidades"):
+    stock = stock + 5:
+} iebox [a](stock < 10)[1]{
+    etiquetadora("Stock critico"):
+} ebox [a][1]{
+    etiquetadora("Stock en rango normal"):
+}
+
+etiquetadora(stock):
+
+=============================================================================================================
+
+Caso Válido C: Ciclos auto con el pez 🐟 y anidación por niveles ([a], [b])
+Prueba el contador de iteraciones y la validación jerárquica de letras desde [a] (nivel externo) hacia [b] (nivel interno).   Plaintextlote i = 1:
+lote j = 1:
+lote conteoLotes = 0:
+
+// Ciclo nivel [a] (externo) con ciclo nivel [b] (anidado)
+auto [a][i++ 🐟 i <= 3 🐟][1]{
+    etiquetadora("Procesando pasillo"):
+    etiquetadora(i):
+
+    auto [b][j++ 🐟 j <= 2 🐟][1]{
+        conteoLotes++:
+        etiquetadora(conteoLotes):
+    }
+}
+
+=============================================================================================================
+
+2. Ejemplos de Código NO Válido (Pruebas de Fallo)Estos fragmentos están diseñados para demostrar cómo el analizador detecta errores léxicos/sintácticos (en el árbol de ANTLR) y semánticos (en el LanguageCustomVisitor).   Error Semántico 1: Jerarquía de anidación incorrecta ([b] sin estar dentro de [a])Qué prueba: El Visitor verifica que el primer nivel sea [a]. Al poner [b] en la raíz (o repetir [a] dentro de otro [a]), arroja error semántico de identificador de anidación inválido.Plaintextlote i = 1:
+
+// ERROR: Inicia en [b] cuando la profundidad actual es 0 (esperaba [a])
+auto [b][i++ 🐟 i <= 3 🐟][1]{
+    etiquetadora(i):
+}
