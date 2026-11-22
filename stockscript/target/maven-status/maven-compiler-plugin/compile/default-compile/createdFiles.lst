@@ -27,4 +27,5 @@ com\stockscript\LanguageParser$ProgramaContext.class
 com\stockscript\LanguageParser.class
 com\stockscript\LanguageParser$TerminoContext.class
 com\stockscript\LanguageParser$ImpresionContext.class
+com\stockscript\Casos.txt
 com\stockscript\LanguageParser$IncrementoContext.class
