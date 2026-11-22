@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockScript Web · Compilador</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">SS</span>
+      <div>
+        <h1>StockScript Web</h1>
+        <p>Analizador léxico, sintáctico y semántico en línea</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span id="status" class="status">Listo</span>
+      <button id="btn-compile" class="btn primary">▶ Compilar</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="tutoriales">Tutoriales</button>
+    <button class="tab" data-tab="editor">Editor .stoc</button>
+  </nav>
+
+  <main>
+    <section id="tutoriales" class="view active">
+      <div class="hero">
+        <h2>Bienvenido a StockScript</h2>
+        <p>
+          StockScript es un lenguaje orientado a inventarios. Sus programas terminan cada instrucción con
+          <code>:</code>, usan niveles <code>[a]</code> a <code>[z]</code> para el anidamiento y el pez
+          <code>🐟</code> para separar las partes de un ciclo <code>auto</code>.
+        </p>
+        <div class="hero-actions">
+          <button class="btn primary" data-example="06-hola">Cargar “Hola StockScript”</button>
+          <button class="btn" data-tab="editor">Ir al editor</button>
+        </div>
+      </div>
+
+      <div class="tutorial-grid">
+        <details class="card" open>
+          <summary>1. Tipos de dato y literales</summary>
+          <table class="mini-table">
+            <thead><tr><th>Palabra</th><th>Tipo</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td><code>lote</code></td><td>entero</td><td><code>lote cajas = 10:</code></td></tr>
+              <tr><td><code>prom</code></td><td>flotante</td><td><code>prom precio = 15.5:</code></td></tr>
+              <tr><td><code>palanca</code></td><td>booleano</td><td><code>palanca activo = right:</code></td></tr>
+              <tr><td><code>etiqueta</code></td><td>cadena</td><td><code>etiqueta nombre = "Atun":</code></td></tr>
+              <tr><td><code>mini</code></td><td>carácter</td><td><code>mini letra = 'A':</code></td></tr>
+            </tbody>
+          </table>
+          <p class="note">Booleanos: <code>right</code> / <code>true</code> y <code>left</code> / <code>false</code>.</p>
+        </details>
+
+        <details class="card" open>
+          <summary>2. Declarar, asignar, incrementar e imprimir</summary>
+          <pre><code>lote cajas = 10:
+cajas = cajas + 5:
+cajas++:
+etiquetadora("Total: "):
+etiquetadora(cajas):</code></pre>
+          <p class="note">Toda declaración debe llevar valor inicial; si no, el analizador semántico lo marca.</p>
+          <button class="btn small" data-example="01-declaraciones">Ver ejemplo completo</button>
+        </details>
+
+        <details class="card">
+          <summary>3. Condicionales: ibox, eibox / iebox, ebox</summary>
+          <pre><code>ibox [a](stock &gt; 50)[1]{
+    etiquetadora("Stock alto"):
+} eibox [a](stock == 25)[1]{
+    etiquetadora("Stock exacto"):
+} iebox [a](stock &lt; 10)[1]{
+    etiquetadora("Stock critico"):
+} ebox [a][1]{
+    etiquetadora("Rango normal"):
+}</code></pre>
+          <p class="note">El <code>[1]</code> ejecuta el bloque; el <code>[0]</code> lo omite, como un comentario.</p>
+          <button class="btn small" data-example="02-condicionales">Ver ejemplo completo</button>
+        </details>
+
+        <details class="card">
+          <summary>4. Ciclos auto con 🐟</summary>
+          <pre><code>lote i = 1:
+auto [a][i++ 🐟 i &lt;= 3 🐟][1]{
+    etiquetadora(i):
+
+    auto [b][j++ 🐟 j &lt;= 2 🐟][1]{
+        etiquetadora("interno"):
+    }
+}</code></pre>
+          <p class="note">Tres partes separadas por 🐟: inicialización, condición y paso. El nivel empieza en <code>[a]</code>.</p>
+          <button class="btn small" data-example="03-ciclos">Ver ejemplo completo</button>
+        </details>
+
+        <details class="card">
+          <summary>5. Errores que detecta la web</summary>
+          <ul class="error-list">
+            <li><strong>Léxicos:</strong> caracteres desconocidos, cadenas sin cerrar.</li>
+            <li><strong>Sintácticos:</strong> falta de <code>:</code>, paréntesis o llave mal cerrada.</li>
+            <li><strong>Semánticos:</strong> variable no declarada, nivel <code>[b]</code> en la raíz, interruptor inválido.</li>
+            <li><strong>Ejecución:</strong> división entre cero.</li>
+          </ul>
+          <div class="hero-actions">
+            <button class="btn small danger" data-example="04-error-anidacion">Probar error de nivel</button>
+            <button class="btn small danger" data-example="05-error-division">Probar división entre cero</button>
+          </div>
+        </details>
+
+        <details class="card">
+          <summary>6. Cómo guardar tus programas</summary>
+          <p>
+            En el editor, pulsa <strong>Guardar</strong> y escribe un nombre como <code>miinventario.stoc</code>.
+            El archivo se conserva en <code>PáginaWeb/storage/stoc/</code> y aparece en el selector <strong>Abrir</strong>.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section id="editor" class="view">
+      <div class="editor-layout">
+        <div class="workbench panel">
+          <div class="toolbar">
+            <select id="file-select" aria-label="Archivos guardados">
+              <option value="">— archivos guardados —</option>
+            </select>
+            <button id="btn-open" class="btn small">Abrir</button>
+            <button id="btn-new" class="btn small">Nuevo</button>
+            <button id="btn-save" class="btn small accent">Guardar</button>
+            <button id="btn-delete" class="btn small danger">Eliminar</button>
+            <button id="btn-download" class="btn small">Descargar</button>
+            <span id="file-name" class="file-name">sin guardar.stoc</span>
+          </div>
+
+          <div class="editor-wrap">
+            <div id="line-numbers" class="line-numbers" aria-hidden="true"></div>
+            <textarea id="code" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="// Escribe aquí tu programa .stoc&#10;lote cajas = 10:&#10;etiquetadora(cajas):"></textarea>
+          </div>
+
+          <div class="editor-foot">
+            <span id="cursor-info">Ln 1, Col 1</span>
+            <label class="auto-label"><input type="checkbox" id="auto-compile"> Validar al escribir</label>
+          </div>
+        </div>
+
+        <aside class="results panel">
+          <div class="result-tabs">
+            <button class="result-tab active" data-result="errores">Errores <span id="error-count" class="badge">0</span></button>
+            <button class="result-tab" data-result="tokens">Tokens</button>
+            <button class="result-tab" data-result="salida">Salida</button>
+            <button class="result-tab" data-result="simbolos">Símbolos</button>
+          </div>
+          <div id="panel-errores" class="result-panel active"><div class="empty">Compila para ver los resultados.</div></div>
+          <div id="panel-tokens" class="result-panel"><div class="empty">Sin tokens.</div></div>
+          <div id="panel-salida" class="result-panel"><div class="empty">Sin salida.</div></div>
+          <div id="panel-simbolos" class="result-panel"><div class="empty">Sin símbolos.</div></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -513,5 +513,9 @@ public class LanguageCustomVisitor extends LanguageBaseVisitor<Object> {
         }
         return obj != null;
     }
+
+    public Map<String, Simbolo> getMemoria() {
+        return memory;
+    }
 }
 

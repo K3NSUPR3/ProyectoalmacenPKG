@@ -1,0 +1,6 @@
+{
+  "titulo": "06 · Hola StockScript",
+  "descripcion": "Programa mínimo para empezar: una declaración y dos impresiones.",
+  "categoria": "válido",
+  "contenido": "lote manzanas = 5:\netiquetadora(\"Hola StockScript\"):\netiquetadora(manzanas):\n"
+}

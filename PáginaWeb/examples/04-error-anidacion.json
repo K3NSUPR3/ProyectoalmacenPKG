@@ -1,0 +1,6 @@
+{
+  "titulo": "04 · Error: nivel [b] en la raíz",
+  "descripcion": "El visitor esperaba [a] en profundidad 0; marca el error semántico.",
+  "categoria": "inválido",
+  "contenido": "lote i = 1:\n\n// ERROR: inicia en [b] cuando la profundidad es 0 (esperaba [a])\nauto [b][i++ 🐟 i <= 3 🐟][1]{\n    etiquetadora(i):\n}\n"
+}
