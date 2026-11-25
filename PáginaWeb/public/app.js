@@ -160,17 +160,22 @@ async function loadFiles() {
     files.map((file) => `<option value="${escapeHtml(file.nombre)}">${escapeHtml(file.nombre)}</option>`).join('');
 }
 
-async function loadExample(id) {
-  const example = examples[id];
-  if (!example) return;
+async function loadCodeInEditor(sourceCode, name = '') {
   if (code.value.trim() && !confirm('¿Reemplazar el contenido actual del editor?')) return;
-  code.value = example.contenido;
-  currentFile = '';
+  code.value = sourceCode;
+  currentFile = name;
   updateFileName();
   updateLineNumbers();
   updateCursor();
   activateTab('editor');
   await compile();
+}
+window.loadCodeInEditor = loadCodeInEditor;
+
+async function loadExample(id) {
+  const example = examples[id];
+  if (!example) return;
+  await loadCodeInEditor(example.contenido, '');
 }
 
 $$('[data-tab]').forEach((button) => button.addEventListener('click', () => activateTab(button.dataset.tab)));
@@ -201,7 +206,7 @@ code.addEventListener('keydown', (event) => {
 });
 
 $('#btn-new').addEventListener('click', () => {
-  if (code.value.trim() && !confirm('¿Crear un archivo nuevo? Se perderán los cambios no guardados.')) return;
+  if (code.value.trim() && !confirm('¿Limpiar el editor y la consola? Se perderán los cambios no guardados.')) return;
   code.value = '';
   currentFile = '';
   lastResult = null;
@@ -209,10 +214,42 @@ $('#btn-new').addEventListener('click', () => {
   updateLineNumbers();
   updateCursor();
   panelErrores.innerHTML = '<div class="empty">Compila para ver los resultados.</div>';
+  panelTokens.innerHTML = '<div class="empty">Sin tokens.</div>';
+  panelSalida.innerHTML = '<div class="empty">Sin salida.</div>';
+  panelSimbolos.innerHTML = '<div class="empty">Sin símbolos.</div>';
   errorCount.textContent = '0';
   errorCount.classList.remove('has-errors');
   setStatus('Listo');
 });
+
+const fileImportInput = $('#file-import');
+const btnImport = $('#btn-import');
+if (btnImport && fileImportInput) {
+  btnImport.addEventListener('click', () => {
+    fileImportInput.value = '';
+    fileImportInput.click();
+  });
+  fileImportInput.addEventListener('change', (event) => {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+    if (!/\.stoc$/i.test(file.name)) {
+      alert('Por favor selecciona un archivo con extensión .stoc');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (code.value.trim() && !confirm('¿Reemplazar el contenido actual del editor?')) return;
+      code.value = String(reader.result || '');
+      currentFile = file.name;
+      updateFileName();
+      updateLineNumbers();
+      updateCursor();
+      setStatus(`Importado ${file.name}`, 'ok');
+    };
+    reader.onerror = () => alert('No se pudo leer el archivo seleccionado.');
+    reader.readAsText(file, 'utf-8');
+  });
+}
 
 $('#btn-open').addEventListener('click', async () => {
   const name = fileSelect.value;

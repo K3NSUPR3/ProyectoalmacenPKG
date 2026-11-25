@@ -26,29 +26,61 @@
   </header>
 
   <nav class="tabs">
-    <button class="tab active" data-tab="tutoriales">Tutoriales</button>
+    <button class="tab active" data-tab="inicio">Inicio</button>
+    <button class="tab" data-tab="tutoriales">Tutoriales</button>
     <button class="tab" data-tab="editor">Editor .stoc</button>
   </nav>
 
 
   <main>
-    <!--tuto pepe-->
-    <section id="tutoriales" class="view active">
+    <!-- Módulo 1: Landing Page -->
+    <section id="inicio" class="view active">
       <div class="hero">
         <div class="hero-copy">
           <h2>Bienvenido a StockScript</h2>
           <p>
-            StockScript es un lenguaje orientado a inventarios. Sus programas terminan cada instrucción con
-            <code>:</code>, usan niveles <code>[a]</code> a <code>[z]</code> para el anidamiento y el pez
-            <code>🐟</code> para separar las partes de un ciclo <code>auto</code>.
+            StockScript es un lenguaje de programación orientado a la gestión y control de almacenes e inventarios.
+            Sus programas terminan cada instrucción con <code>:</code>, utilizan niveles jerárquicos <code>[a]</code> a <code>[z]</code>
+            para el anidamiento, interruptores <code>[1]</code> / <code>[0]</code> y el separador <code>🐟</code> en los ciclos <code>auto</code>.
           </p>
           <div class="hero-actions">
-            <button class="btn primary" data-example="06-hola">Cargar “Hola StockScript”</button>
-            <button class="btn" data-tab="editor">Ir al editor</button>
+            <button class="btn primary" data-example="06-hola">▶ Probar “Hola StockScript”</button>
+            <button class="btn" data-tab="tutoriales">Ir a los tutoriales</button>
+            <button class="btn" data-tab="editor">Ir al editor .stoc</button>
           </div>
         </div>
         <img class="hero-art" src="assets/StockScript.png" alt="Caja 3D con el nombre StockScript">
       </div>
+
+      <div class="tutorial-grid">
+        <div class="card">
+          <h3>Características principales</h3>
+          <ul class="error-list">
+            <li><strong>Temática industrial:</strong> tipos <code>lote</code>, <code>prom</code>, <code>palanca</code>, <code>etiqueta</code> y <code>mini</code>.</li>
+            <li><strong>Control por interruptor:</strong> usa <code>[1]</code> para ejecutar o <code>[0]</code> para desactivar bloques como comentario.</li>
+            <li><strong>Anidamiento estricto:</strong> valida jerarquía <code>[a]</code> &rarr; <code>[b]</code> &rarr; <code>[c]</code> en tiempo de compilación.</li>
+            <li><strong>Compilador real en Java:</strong> impulsado por ANTLR4 y patrón Visitor con análisis léxico, sintáctico y semántico.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Ejemplo rápido en StockScript</h3>
+          <pre><code>// Control básico de inventario
+lote cajas = 10:
+prom precio = 15.5:
+prom total = cajas * precio:
+
+etiquetadora("Total en almacén:"):
+etiquetadora(total):</code></pre>
+          <div class="hero-actions">
+            <button class="btn small primary" data-example="01-declaraciones">▶ Probar código en el editor</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulo 2: Tutoriales -->
+    <section id="tutoriales" class="view">
 
       <div class="tutorial-grid">
         <details class="card" open>
@@ -70,11 +102,11 @@
           <summary>2. Declarar, asignar, incrementar e imprimir</summary>
           <pre><code>lote cajas = 10:
 cajas = cajas + 5:
-cajas++:
+cajas++
 etiquetadora("Total: "):
 etiquetadora(cajas):</code></pre>
           <p class="note">Toda declaración debe llevar valor inicial; si no, el analizador semántico lo marca.</p>
-          <button class="btn small" data-example="01-declaraciones">Ver ejemplo completo</button>
+          <button class="btn small" data-example="01-declaraciones">▶ Probar código</button>
         </details>
 
         <details class="card">
@@ -121,12 +153,96 @@ auto [a][i++ 🐟 i &lt;= 3 🐟][1]{
         </details>
 
         <details class="card">
-          <summary>6. Cómo guardar tus programas</summary>
+          <summary>6. Cómo guardar, importar y exportar programas</summary>
           <p>
-            En el editor, pulsa <strong>Guardar</strong> y escribe un nombre como <code>miinventario.stoc</code>.
-            El archivo se conserva en <code>PáginaWeb/storage/stoc/</code> y aparece en el selector <strong>Abrir</strong>.
+            En el editor puedes pulsar <strong>Importar</strong> para cargar un archivo <code>.stoc</code> desde tu equipo,
+            <strong>Exportar</strong> para descargarlo o <strong>Guardar</strong> para conservarlo en el servidor local.
           </p>
         </details>
+      </div>
+
+      <!-- Academia Interactiva dentro del Módulo 2 -->
+      <div id="stoc-academia-interactiva" class="stoc-tut-wrapper">
+        <div class="stoc-tut-header">
+          <div>
+            <h2 class="stoc-tut-title">Academia Interactiva StockScript</h2>
+            <p class="stoc-tut-subtitle">Explora ejemplos válidos, verifica tus conocimientos y pruébalos directamente en el editor.</p>
+          </div>
+          <div class="stoc-tut-badge" id="stoc-tut-xp">0 / 6 retos completados</div>
+        </div>
+
+        <div class="stoc-tut-progress-box">
+          <div class="stoc-tut-progress-meta">
+            <span id="stoc-tut-progress-text">Progreso de dominio: 0%</span>
+            <span id="stoc-tut-step-text">Módulo 1 de 6</span>
+          </div>
+          <div class="stoc-tut-progress-track">
+            <div class="stoc-tut-progress-fill" id="stoc-tut-progress-bar"></div>
+          </div>
+        </div>
+
+        <div class="stoc-tut-tabs" id="stoc-tut-tabs">
+          <button type="button" class="stoc-tut-tab is-active" data-lesson="0">1. Almacén y aritmética</button>
+          <button type="button" class="stoc-tut-tab" data-lesson="1">2. ibox [0] como comentario</button>
+          <button type="button" class="stoc-tut-tab" data-lesson="2">3. Cadena ibox / eibox / ebox</button>
+          <button type="button" class="stoc-tut-tab" data-lesson="3">4. Ciclo auto con 🐟</button>
+          <button type="button" class="stoc-tut-tab" data-lesson="4">5. Ciclos anidados [a] y [b]</button>
+          <button type="button" class="stoc-tut-tab" data-lesson="5">6. Cadenas y palanca</button>
+        </div>
+
+        <div class="stoc-tut-grid">
+          <div class="stoc-tut-card">
+            <h3 id="stoc-tut-lesson-title">Cargando módulo...</h3>
+            <p id="stoc-tut-lesson-desc" style="color: var(--tut-muted); font-size: 0.92rem;"></p>
+
+            <div class="stoc-tut-code" id="stoc-tut-code-viewer"></div>
+
+            <div class="stoc-tut-actions">
+              <button type="button" class="stoc-tut-btn stoc-tut-btn-primary" id="stoc-tut-btn-try">▶ Probar código</button>
+              <button type="button" class="stoc-tut-btn" id="stoc-tut-btn-copy">Copiar ejemplo</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="base">Ejemplo base del módulo</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-1">Ej. 1: Lotes y peso</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-2">Ej. 2: ibox [0] omitido</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-3">Ej. 3: Temperatura</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-4">Ej. 4: Pasillos auto</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-5">Ej. 5: Pasillo y estante</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-6">Ej. 6: Capacidad y mini</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-7">Ej. 7: Meta e ibox [0]</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-8">Ej. 8: Monitoreo</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-9">Ej. 9: Estado envío</button>
+              <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-10">Ej. 10: Nivel stock</button>
+            </div>
+
+            <div class="stoc-tut-toast" id="stoc-tut-toast"></div>
+
+            <div class="stoc-tut-visual">
+              <strong style="font-size: 0.80rem;">Esquema visual de referencia:</strong>
+              <img src="assets/LegoFil.jpg" alt="Referencia visual StockScript"
+                   onerror="this.style.display='none'; document.getElementById('stoc-tut-img-alt').style.display='block';">
+              <img src="assets/Lego_figureAuto.jpg" alt="Referencia visual StockScript"
+                   onerror="this.style.display='none'; document.getElementById('stoc-tut-img-alt').style.display='block';">
+              <div id="stoc-tut-img-alt" style="display:none; font-size:0.82rem; color:var(--tut-muted); margin-top:6px;">
+                Jerarquía de ciclos: <code>[a] (nivel 0) -> [b] (nivel 1) -> ... -> [z] (nivel 25)</code> | Interruptor: <code>[1]</code> activo, <code>[0]</code> comentario.
+              </div>
+            </div>
+          </div>
+
+          <div class="stoc-tut-card">
+            <h3>Comprobación rápida</h3>
+            <p id="stoc-tut-question" style="font-size: 0.92rem; margin-bottom: 12px;"></p>
+
+            <form id="stoc-tut-quiz-form">
+              <div id="stoc-tut-options"></div>
+              <div class="stoc-tut-actions" style="margin-top: 12px;">
+                <button type="submit" class="stoc-tut-btn stoc-tut-btn-primary">Verificar respuesta</button>
+                <button type="button" class="stoc-tut-btn" id="stoc-tut-btn-next">Siguiente módulo</button>
+              </div>
+            </form>
+
+            <div class="stoc-tut-feedback" id="stoc-tut-feedback"></div>
+            <video loop width="420" height="280" muted autoplay playsinline><source src="assets/Lego_figureOperative.mp4" type="video/mp4"></video>
+          </div>
+        </div>
       </div>
     </section>
     <!--fin tuto pepe-->
@@ -140,10 +256,12 @@ auto [a][i++ 🐟 i &lt;= 3 🐟][1]{
               <option value="">— archivos guardados —</option>
             </select>
             <button id="btn-open" class="btn small">Abrir</button>
-            <button id="btn-new" class="btn small">Nuevo</button>
+            <input type="file" id="file-import" accept=".stoc" hidden>
+            <button id="btn-import" class="btn small">Importar</button>
+            <button id="btn-new" class="btn small">Limpiar</button>
             <button id="btn-save" class="btn small accent">Guardar</button>
             <button id="btn-delete" class="btn small danger">Eliminar</button>
-            <button id="btn-download" class="btn small">Descargar</button>
+            <button id="btn-download" class="btn small">Exportar</button>
             <span id="file-name" class="file-name">sin guardar.stoc</span>
           </div>
 
@@ -174,92 +292,6 @@ auto [a][i++ 🐟 i &lt;= 3 🐟][1]{
     </section>
   </main>
 
-  <!--seccion tutoriales-->
-   <section id="stoc-academia-interactiva" class="stoc-tut-wrapper">
-  <div class="stoc-tut-header">
-    <div>
-      <h2 class="stoc-tut-title">Academia Interactiva StockScript</h2>
-      <p class="stoc-tut-subtitle">Explora ejemplos válidos e inválidos, verifica tus conocimientos y copia código listo para probar.</p>
-    </div>
-    <div class="stoc-tut-badge" id="stoc-tut-xp">0 / 4 retos completados</div>
-  </div>
-
-  <div class="stoc-tut-progress-box">
-    <div class="stoc-tut-progress-meta">
-      <span id="stoc-tut-progress-text">Progreso de dominio: 0%</span>
-      <span id="stoc-tut-step-text">Módulo 1 de 4</span>
-    </div>
-    <div class="stoc-tut-progress-track">
-      <div class="stoc-tut-progress-fill" id="stoc-tut-progress-bar"></div>
-    </div>
-  </div>
-
-  <div class="stoc-tut-tabs" id="stoc-tut-tabs">
-    <button type="button" class="stoc-tut-tab is-active" data-lesson="0">1. Almacén y aritmética</button>
-    <button type="button" class="stoc-tut-tab" data-lesson="1">2. ibox [0] como comentario</button>
-    <button type="button" class="stoc-tut-tab" data-lesson="2">3. Cadena ibox / eibox / ebox</button>
-    <button type="button" class="stoc-tut-tab" data-lesson="3">4. Ciclo auto con 🐟</button>
-    <button type="button" class="stoc-tut-tab" data-lesson="4">5. Ciclos anidados [a] y [b]</button>
-    <button type="button" class="stoc-tut-tab" data-lesson="5">6. Cadenas y palanca</button
-  </div>
-
-  <div class="stoc-tut-grid">
-    <!-- Panel izquierdo: Visor independiente de ejemplos e imagen -->
-    <div class="stoc-tut-card">
-      <h3 id="stoc-tut-lesson-title">Cargando módulo...</h3>
-      <p id="stoc-tut-lesson-desc" style="color: var(--tut-muted); font-size: 0.92rem;"></p>
-
-      <div class="stoc-tut-code" id="stoc-tut-code-viewer"></div>
-
-      <div class="stoc-tut-actions">
-        <button type="button" class="stoc-tut-btn stoc-tut-btn-primary" id="stoc-tut-btn-copy">Copiar ejemplo al portapapeles</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="base">Ejemplo base del módulo</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-1">Ej. 1: Lotes y peso</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-2">Ej. 2: ibox [0] omitido</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-3">Ej. 3: Temperatura</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-4">Ej. 4: Pasillos auto</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-5">Ej. 5: Pasillo y estante</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-6">Ej. 6: Capacidad y mini</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-7">Ej. 7: Meta y eibox [0]</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-8">Ej. 8: Monitoreo true</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-9">Ej. 9: Estado envío</button>
-        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-10">Ej. 10: Nivel stock</button>
-      </div>
-
-      <div class="stoc-tut-toast" id="stoc-tut-toast"></div>
-
-      <div class="stoc-tut-visual">
-        <strong style="font-size: 0.80rem;">Esquema visual de referencia:</strong>
-        <img src="assets/LegoFil.jpg" alt="Referencia visual StockScript"
-             onerror="this.style.display='none'; document.getElementById('stoc-tut-img-alt').style.display='block';">
-             <img src="assets/Lego_figureAuto.jpg" alt="Referencia visual StockScript"
-             onerror="this.style.display='none'; document.getElementById('stoc-tut-img-alt').style.display='block';">
-        <div id="stoc-tut-img-alt" style="display:none; font-size:0.82rem; color:var(--tut-muted); margin-top:6px;">
-          Jerarquía de ciclos: <code>[a] (nivel 0) -> [b] (nivel 1) -> ... -> [z] (nivel 25)</code> | Interruptor: <code>[1]</code> activo, <code>[0]</code> comentario.
-        </div>
-      </div>
-    </div>
-
-    <!-- Panel derecho: Evaluación tipo Duolingo con Radio Buttons -->
-    <div class="stoc-tut-card">
-      <h3>Comprobación rápida</h3>
-      <p id="stoc-tut-question" style="font-size: 0.92rem; margin-bottom: 12px;"></p>
-
-      <form id="stoc-tut-quiz-form">
-        <div id="stoc-tut-options"></div>
-        <div class="stoc-tut-actions" style="margin-top: 12px;">
-          <button type="submit" class="stoc-tut-btn stoc-tut-btn-primary">Verificar respuesta</button>
-          <button type="button" class="stoc-tut-btn" id="stoc-tut-btn-next">Siguiente módulo</button>
-        </div>
-      </form>
-
-      <div class="stoc-tut-feedback" id="stoc-tut-feedback"></div>
-      <video loop="true" width="420" height="280" muted autoplay><source src="assets/Lego_figureOperative.mp4" type="video/mp4">
-</video>
-    </div>
-  </div>
-</section>
-<!--fin seccion tutoriales-->
 
   <footer class="footer">
     <img class="footer-logo" src="assets/StockScriptIcon.png" alt="Logo StockScript">
@@ -276,8 +308,8 @@ auto [a][i++ 🐟 i &lt;= 3 🐟][1]{
     "ej-4": `lote i = 1:\n\nauto [a][i++ 🐟 i <= 5 🐟][1]{\n    etiquetadora("Procesando pasillo #"):\n    etiquetadora(i):\n}`,
     "ej-5": `lote pasillo = 1:\nlote estante = 1:\nlote totalProductos = 0:\n\nauto [a][pasillo++ 🐟 pasillo <= 2 🐟][1]{\n    auto [b][estante++ 🐟 estante <= 3 🐟][1]{\n        totalProductos = totalProductos + 10:\n        etiquetadora("Pasillo:"):\n        etiquetadora(pasillo):\n        etiquetadora("Estante:"):\n        etiquetadora(estante):\n    }\n    // Restablecemos estante para el siguiente pasillo\n    estante = 1:\n}`,
     "ej-6": `lote zonaA = 50:\nlote zonaB = 30:\nlote zonaC = 20:\nlote capacidadMaxima = 120:\n\nmini prioridad = 'A':\n\n// Calculo de espacio restante\nlote espacioTotal = zonaA + zonaB + zonaC:\nlote espacioDisponible = capacidadMaxima - espacioTotal:\n\netiquetadora("Prioridad de reabastecimiento:"):\netiquetadora(prioridad):\netiquetadora(espacioDisponible):`,
-    "ej-7": `lote metaDiaria = 500:\nlote producidaHoy = 450:\nlote rechazadaHoy = 20:\n\nibox [a](producidaHoy >= metaDiaria)[1]{\n    etiquetadora("Meta diaria cumplida"):\n    // Bloque eibox desactivado intencionalmente\n    eibox [b](rechazadaHoy > 10)[0]{\n        etiquetadora("Revisar calidad"):\n    }\n} ebox [a][1]{\n    etiquetadora("Meta no cumplida"):\n}`,
-    "ej-8": `lote contador = 1:\n\nauto [a][contador++ 🐟 true 🐟][1]{\n    etiquetadora("Ciclo de monitoreo continuo, iteracion #"):\n    etiquetadora(contador):\n    auto [b][0 🐟 0 < 500000 🐟][1]{}\n}`,
+    "ej-7": `lote metaDiaria = 500:\nlote producidaHoy = 520:\nlote rechazadaHoy = 20:\n\nibox [a](producidaHoy >= metaDiaria)[1]{\n    etiquetadora("Meta diaria cumplida"):\n    // Bloque ibox [b] desactivado intencionalmente con [0]\n    ibox [b](rechazadaHoy > 10)[0]{\n        etiquetadora("Revisar calidad"):\n    }\n} ebox [a][1]{\n    etiquetadora("Meta no cumplida"):\n}`,
+    "ej-8": `lote contador = 1:\npalanca activo = true:\n\nauto [a][contador++ 🐟 contador <= 4 🐟][1]{\n    etiquetadora("Ciclo de monitoreo, iteracion #"):\n    etiquetadora(contador):\n}\netiquetadora(activo):`,
     "ej-9": `etiqueta estadoInicial = "En transito":\netiqueta estadoFinal = "Entregado":\npalanca completado = false:\n\netiquetadora("Estado del envio:"):\netiquetadora(estadoInicial):\netiquetadora(completado):\n\nestadoInicial = estadoFinal:\ncompletado = true:\n\netiquetadora("Nuevo estado:"):\netiquetadora(estadoInicial):\netiquetadora(completado):`,
     "ej-10": `lote inventarioStock = 50:\nmini nivelStock = 'M': // M = Medio\n\nibox [a](nivelStock == 'A')[1]{\n    etiquetadora("Inventario Alto"):\n} eibox [a](nivelStock == 'M')[1]{\n    etiquetadora("Inventario Medio"):\n    ibox [b](inventarioStock < 60)[1]{\n        etiquetadora("Realizar pedido preventivo"):\n    }\n} iebox [a](nivelStock == 'B')[1]{\n    etiquetadora("Inventario Bajo"):\n} ebox [a][1]{\n    etiquetadora("Estado de inventario desconocido"):\n}`
   };
@@ -437,6 +469,12 @@ auto [a][i++ 🐟 i &lt;= 3 🐟][1]{
     const btn = e.target.closest(".stoc-tut-tab");
     if (!btn) return;
     loadLesson(Number(btn.dataset.lesson));
+  });
+
+  document.getElementById("stoc-tut-btn-try").addEventListener("click", () => {
+    if (typeof window.loadCodeInEditor === "function") {
+      window.loadCodeInEditor(codeViewerEl.textContent, "");
+    }
   });
 
   document.getElementById("stoc-tut-btn-copy").addEventListener("click", async () => {

@@ -2,5 +2,5 @@
   "titulo": "03 · Ciclos auto con pez 🐟",
   "descripcion": "Anidación por niveles [a] y [b] con el separador 🐟.",
   "categoria": "válido",
-  "contenido": "lote i = 1:\nlote j = 1:\nlote conteoLotes = 0:\n\n// Ciclo nivel [a] (externo) con ciclo nivel [b] (anidado)\nauto [a][i++ 🐟 i <= 3 🐟][1]{\n    etiquetadora(\"Procesando pasillo\"):\n    etiquetadora(i):\n\n    auto [b][j++ 🐟 j <= 2 🐟][1]{\n        conteoLotes++:\n        etiquetadora(conteoLotes):\n    }\n}\n"
+  "contenido": "lote i = 1:\nlote j = 1:\nlote conteoLotes = 0:\n\n// Ciclo nivel [a] (externo) con ciclo nivel [b] (anidado)\nauto [a][i++ 🐟 i <= 3 🐟][1]{\n    etiquetadora(\"Procesando pasillo\"):\n    etiquetadora(i):\n\n    auto [b][j++ 🐟 j <= 2 🐟][1]{\n        conteoLotes++\n        etiquetadora(conteoLotes):\n    }\n}\n"
 }

@@ -1,0 +1,3 @@
+lote manzanas = 5:
+etiquetadora("Hola StockScript"):
+etiquetadora(manzanas):
