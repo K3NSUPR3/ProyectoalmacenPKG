@@ -6,6 +6,7 @@
 <!-- Título -->
   <title>StockScript Web · Compilador</title>
   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="styletutori.css">
   <link rel="icon" type="image/png" href="assets/StockScriptIcon.png">
 </head>
 <body>
@@ -29,7 +30,9 @@
     <button class="tab" data-tab="editor">Editor .stoc</button>
   </nav>
 
+
   <main>
+    <!--tuto pepe-->
     <section id="tutoriales" class="view active">
       <div class="hero">
         <div class="hero-copy">
@@ -77,14 +80,14 @@ etiquetadora(cajas):</code></pre>
         <details class="card">
           <summary>3. Condicionales: ibox, eibox / iebox, ebox</summary>
           <pre><code>ibox [a](stock &gt; 50)[1]{
-    etiquetadora("Stock alto"):
-} eibox [a](stock == 25)[1]{
-    etiquetadora("Stock exacto"):
-} iebox [a](stock &lt; 10)[1]{
-    etiquetadora("Stock critico"):
-} ebox [a][1]{
-    etiquetadora("Rango normal"):
-}</code></pre>
+                etiquetadora("Stock alto"):
+            } eibox [a](stock == 25)[1]{
+                etiquetadora("Stock exacto"):
+            } iebox [a](stock &lt; 10)[1]{
+                etiquetadora("Stock critico"):
+            } ebox [a][1]{
+                etiquetadora("Rango normal"):
+            }</code></pre>
           <p class="note">El <code>[1]</code> ejecuta el bloque; el <code>[0]</code> lo omite, como un comentario.</p>
           <button class="btn small" data-example="02-condicionales">Ver ejemplo completo</button>
         </details>
@@ -126,7 +129,9 @@ auto [a][i++ 🐟 i &lt;= 3 🐟][1]{
         </details>
       </div>
     </section>
-
+    <!--fin tuto pepe-->
+   
+    <!--seccion editor-->
     <section id="editor" class="view">
       <div class="editor-layout">
         <div class="workbench panel">
@@ -169,12 +174,325 @@ auto [a][i++ 🐟 i &lt;= 3 🐟][1]{
     </section>
   </main>
 
+  <!--seccion tutoriales-->
+   <section id="stoc-academia-interactiva" class="stoc-tut-wrapper">
+  <div class="stoc-tut-header">
+    <div>
+      <h2 class="stoc-tut-title">Academia Interactiva StockScript</h2>
+      <p class="stoc-tut-subtitle">Explora ejemplos válidos e inválidos, verifica tus conocimientos y copia código listo para probar.</p>
+    </div>
+    <div class="stoc-tut-badge" id="stoc-tut-xp">0 / 4 retos completados</div>
+  </div>
+
+  <div class="stoc-tut-progress-box">
+    <div class="stoc-tut-progress-meta">
+      <span id="stoc-tut-progress-text">Progreso de dominio: 0%</span>
+      <span id="stoc-tut-step-text">Módulo 1 de 4</span>
+    </div>
+    <div class="stoc-tut-progress-track">
+      <div class="stoc-tut-progress-fill" id="stoc-tut-progress-bar"></div>
+    </div>
+  </div>
+
+  <div class="stoc-tut-tabs" id="stoc-tut-tabs">
+    <button type="button" class="stoc-tut-tab is-active" data-lesson="0">1. Almacén y aritmética</button>
+    <button type="button" class="stoc-tut-tab" data-lesson="1">2. ibox [0] como comentario</button>
+    <button type="button" class="stoc-tut-tab" data-lesson="2">3. Cadena ibox / eibox / ebox</button>
+    <button type="button" class="stoc-tut-tab" data-lesson="3">4. Ciclo auto con 🐟</button>
+    <button type="button" class="stoc-tut-tab" data-lesson="4">5. Ciclos anidados [a] y [b]</button>
+    <button type="button" class="stoc-tut-tab" data-lesson="5">6. Cadenas y palanca</button
+  </div>
+
+  <div class="stoc-tut-grid">
+    <!-- Panel izquierdo: Visor independiente de ejemplos e imagen -->
+    <div class="stoc-tut-card">
+      <h3 id="stoc-tut-lesson-title">Cargando módulo...</h3>
+      <p id="stoc-tut-lesson-desc" style="color: var(--tut-muted); font-size: 0.92rem;"></p>
+
+      <div class="stoc-tut-code" id="stoc-tut-code-viewer"></div>
+
+      <div class="stoc-tut-actions">
+        <button type="button" class="stoc-tut-btn stoc-tut-btn-primary" id="stoc-tut-btn-copy">Copiar ejemplo al portapapeles</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="base">Ejemplo base del módulo</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-1">Ej. 1: Lotes y peso</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-2">Ej. 2: ibox [0] omitido</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-3">Ej. 3: Temperatura</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-4">Ej. 4: Pasillos auto</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-5">Ej. 5: Pasillo y estante</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-6">Ej. 6: Capacidad y mini</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-7">Ej. 7: Meta y eibox [0]</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-8">Ej. 8: Monitoreo true</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-9">Ej. 9: Estado envío</button>
+        <button type="button" class="stoc-tut-btn" data-stoc-preset="ej-10">Ej. 10: Nivel stock</button>
+      </div>
+
+      <div class="stoc-tut-toast" id="stoc-tut-toast"></div>
+
+      <div class="stoc-tut-visual">
+        <strong style="font-size: 0.80rem;">Esquema visual de referencia:</strong>
+        <img src="assets/LegoFil.jpg" alt="Referencia visual StockScript"
+             onerror="this.style.display='none'; document.getElementById('stoc-tut-img-alt').style.display='block';">
+             <img src="assets/Lego_figureAuto.jpg" alt="Referencia visual StockScript"
+             onerror="this.style.display='none'; document.getElementById('stoc-tut-img-alt').style.display='block';">
+        <div id="stoc-tut-img-alt" style="display:none; font-size:0.82rem; color:var(--tut-muted); margin-top:6px;">
+          Jerarquía de ciclos: <code>[a] (nivel 0) -> [b] (nivel 1) -> ... -> [z] (nivel 25)</code> | Interruptor: <code>[1]</code> activo, <code>[0]</code> comentario.
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel derecho: Evaluación tipo Duolingo con Radio Buttons -->
+    <div class="stoc-tut-card">
+      <h3>Comprobación rápida</h3>
+      <p id="stoc-tut-question" style="font-size: 0.92rem; margin-bottom: 12px;"></p>
+
+      <form id="stoc-tut-quiz-form">
+        <div id="stoc-tut-options"></div>
+        <div class="stoc-tut-actions" style="margin-top: 12px;">
+          <button type="submit" class="stoc-tut-btn stoc-tut-btn-primary">Verificar respuesta</button>
+          <button type="button" class="stoc-tut-btn" id="stoc-tut-btn-next">Siguiente módulo</button>
+        </div>
+      </form>
+
+      <div class="stoc-tut-feedback" id="stoc-tut-feedback"></div>
+      <video loop="true" width="420" height="280" muted autoplay><source src="assets/Lego_figureOperative.mp4" type="video/mp4">
+</video>
+    </div>
+  </div>
+</section>
+<!--fin seccion tutoriales-->
+
   <footer class="footer">
     <img class="footer-logo" src="assets/StockScriptIcon.png" alt="Logo StockScript">
     <p>StockScript · Compilador para inventarios</p>
   </footer>
 
   <script src="app.js"></script>
+  <script>
+(function () {
+  const PRESETS = {
+    "ej-1": `lote articulos = 50:\nlote porCaja = 10:\nprom pesoUnitario = 0.85:\n\nlote cajasCompletas = articulos / porCaja:\nprom pesoTotalLote = articulos * pesoUnitario:\n\netiquetadora(articulos):\netiquetadora(cajasCompletas):\netiquetadora(pesoTotalLote):`,
+    "ej-2": `lote stockSeguridad = 100:\nlote stockActual = 80:\n\n// Este bloque no se ejecutara porque tiene [0]\nibox [a](stockActual < stockSeguridad)[0]{\n    etiquetadora("Advertencia: Stock bajo minimo"):\n    etiquetadora("Ejecutando plan de contingencia"):\n}\n\netiquetadora(stockActual):`,
+    "ej-3": `lote temperaturaBodega = 28:\n\nibox [a](temperaturaBodega > 30)[1]{\n    etiquetadora("Alerta: Temperatura critica"):\n} eibox [a](temperaturaBodega > 25)[1]{\n    etiquetadora("Precaucion: Temperatura elevada"):\n} iebox [a](temperaturaBodega < 5)[1]{\n    etiquetadora("Alerta: Congelacion inminente"):\n} ebox [a][1]{\n    etiquetadora("Temperatura normal"):\n}`,
+    "ej-4": `lote i = 1:\n\nauto [a][i++ 🐟 i <= 5 🐟][1]{\n    etiquetadora("Procesando pasillo #"):\n    etiquetadora(i):\n}`,
+    "ej-5": `lote pasillo = 1:\nlote estante = 1:\nlote totalProductos = 0:\n\nauto [a][pasillo++ 🐟 pasillo <= 2 🐟][1]{\n    auto [b][estante++ 🐟 estante <= 3 🐟][1]{\n        totalProductos = totalProductos + 10:\n        etiquetadora("Pasillo:"):\n        etiquetadora(pasillo):\n        etiquetadora("Estante:"):\n        etiquetadora(estante):\n    }\n    // Restablecemos estante para el siguiente pasillo\n    estante = 1:\n}`,
+    "ej-6": `lote zonaA = 50:\nlote zonaB = 30:\nlote zonaC = 20:\nlote capacidadMaxima = 120:\n\nmini prioridad = 'A':\n\n// Calculo de espacio restante\nlote espacioTotal = zonaA + zonaB + zonaC:\nlote espacioDisponible = capacidadMaxima - espacioTotal:\n\netiquetadora("Prioridad de reabastecimiento:"):\netiquetadora(prioridad):\netiquetadora(espacioDisponible):`,
+    "ej-7": `lote metaDiaria = 500:\nlote producidaHoy = 450:\nlote rechazadaHoy = 20:\n\nibox [a](producidaHoy >= metaDiaria)[1]{\n    etiquetadora("Meta diaria cumplida"):\n    // Bloque eibox desactivado intencionalmente\n    eibox [b](rechazadaHoy > 10)[0]{\n        etiquetadora("Revisar calidad"):\n    }\n} ebox [a][1]{\n    etiquetadora("Meta no cumplida"):\n}`,
+    "ej-8": `lote contador = 1:\n\nauto [a][contador++ 🐟 true 🐟][1]{\n    etiquetadora("Ciclo de monitoreo continuo, iteracion #"):\n    etiquetadora(contador):\n    auto [b][0 🐟 0 < 500000 🐟][1]{}\n}`,
+    "ej-9": `etiqueta estadoInicial = "En transito":\netiqueta estadoFinal = "Entregado":\npalanca completado = false:\n\netiquetadora("Estado del envio:"):\netiquetadora(estadoInicial):\netiquetadora(completado):\n\nestadoInicial = estadoFinal:\ncompletado = true:\n\netiquetadora("Nuevo estado:"):\netiquetadora(estadoInicial):\netiquetadora(completado):`,
+    "ej-10": `lote inventarioStock = 50:\nmini nivelStock = 'M': // M = Medio\n\nibox [a](nivelStock == 'A')[1]{\n    etiquetadora("Inventario Alto"):\n} eibox [a](nivelStock == 'M')[1]{\n    etiquetadora("Inventario Medio"):\n    ibox [b](inventarioStock < 60)[1]{\n        etiquetadora("Realizar pedido preventivo"):\n    }\n} iebox [a](nivelStock == 'B')[1]{\n    etiquetadora("Inventario Bajo"):\n} ebox [a][1]{\n    etiquetadora("Estado de inventario desconocido"):\n}`
+  };
 
+  const LESSONS = [
+    {
+      title: "1. Declaraciones, aritmética de almacén y 'etiquetadora'",
+      desc: "Combina 'lote' y 'prom' para calcular cajas y pesos, mostrando cada resultado con 'etiquetadora(...)'.",
+      code: PRESETS["ej-1"],
+      question: "En el ejemplo de almacén, ¿qué instrucción se utiliza para mostrar el valor de 'pesoTotalLote'?",
+      options: [
+        { value: "a", text: "console.log(pesoTotalLote):" },
+        { value: "b", text: "etiquetadora(pesoTotalLote):" },
+        { value: "c", text: "mostrar(pesoTotalLote);" }
+      ],
+      correct: "b",
+      explainOk: "Correcto: 'etiquetadora(expresion):' es la instrucción de salida del lenguaje."
+    },
+    {
+      title: "2. Interruptor [0] como bloque omitido / comentario",
+      desc: "Cuando el corchete de interruptor contiene [0], el bloque se omite sin ejecutar las 'etiquetadora' internas.",
+      code: PRESETS["ej-2"],
+      question: "Si 'stockActual' es 80 y 'stockSeguridad' es 100 en 'ibox [a](stockActual < stockSeguridad)[0]{ ... }', ¿qué ocurre?",
+      options: [
+        { value: "a", text: "Se imprime 'Advertencia: Stock bajo minimo'." },
+        { value: "b", text: "Se omite el bloque completo porque su interruptor es [0]." },
+        { value: "c", text: "Se detiene el programa con error léxico." }
+      ],
+      correct: "b",
+      explainOk: "Exacto: el interruptor [0] desactiva el bloque como comentario."
+    },
+    {
+      title: "3. Cadena condicional completa: ibox, eibox, iebox y ebox",
+      desc: "Evalúa rangos de temperatura en orden y recurre a 'ebox' cuando ninguna condición anterior se cumple.",
+      code: PRESETS["ej-3"],
+      question: "Si 'temperaturaBodega' vale 28, ¿qué rama se ejecuta primero?",
+      options: [
+        { value: "a", text: "ibox (temperaturaBodega > 30)" },
+        { value: "b", text: "eibox (temperaturaBodega > 25)" },
+        { value: "c", text: "ebox (por defecto)" }
+      ],
+      correct: "b",
+      explainOk: "¡Bien hecho! 28 no es mayor que 30, pero sí es mayor que 25, por lo que entra en 'eibox'."
+    },
+    {
+      title: "4. Ciclo 'auto' con separador '🐟' en nivel [a]",
+      desc: "Recorre pasillos usando el incremento, la condición y el pez '🐟' como delimitador de control.",
+      code: PRESETS["ej-4"],
+      question: "¿Qué símbolo separa las secciones de control dentro de 'auto [a][ ... ]'?",
+      options: [
+        { value: "a", text: "Punto y coma (;)" },
+        { value: "b", text: "El separador 🐟" },
+        { value: "c", text: "Dos puntos (:)" }
+      ],
+      correct: "b",
+      explainOk: "Correcto: 'auto' utiliza el token '🐟' para separar sus partes de control."
+    },
+    {
+      title: "5. Ciclos anidados 'auto' con niveles [a] y [b]",
+      desc: "El ciclo externo usa [a] y el ciclo interno usa [b], restableciendo la variable de estante al terminar cada pasillo.",
+      code: PRESETS["ej-5"],
+      question: "¿Por qué se reinicia 'estante = 1:' al salir del ciclo interno [b]?",
+      options: [
+        { value: "a", text: "Para que el ciclo interno vuelva a recorrer los estantes en el siguiente pasillo." },
+        { value: "b", text: "Porque el nivel [a] borra automáticamente todas las variables." },
+        { value: "c", text: "Para cambiar el identificador [b] a [c]." }
+      ],
+      correct: "a",
+      explainOk: "¡Muy bien! Reiniciar 'estante' permite que cada pasillo del nivel [a] repita el recorrido del nivel [b]."
+    },
+    {
+      title: "6. Variables 'etiqueta', 'palanca' y 'mini'",
+      desc: "Maneja textos entre comillas dobles, booleanos ('true'/'false') y caracteres entre comillas simples ('M').",
+      code: PRESETS["ej-9"],
+      question: "¿Qué tipos de dato corresponden a 'estadoInicial', 'completado' y 'nivelStock' en los ejemplos?",
+      options: [
+        { value: "a", text: "etiqueta (texto), palanca (booleano) y mini (carácter)." },
+        { value: "b", text: "lote (texto), prom (booleano) y etiqueta (carácter)." },
+        { value: "c", text: "palanca (texto), mini (booleano) y lote (carácter)." }
+      ],
+      correct: "a",
+      explainOk: "¡Correcto! 'etiqueta' guarda cadenas, 'palanca' valores lógicos y 'mini' caracteres."
+    }
+  ];
+
+  let currentIndex = 0;
+  const completedLessons = new Set();
+
+  const tabsContainer = document.getElementById("stoc-tut-tabs");
+  const titleEl = document.getElementById("stoc-tut-lesson-title");
+  const descEl = document.getElementById("stoc-tut-lesson-desc");
+  const codeViewerEl = document.getElementById("stoc-tut-code-viewer");
+  const questionEl = document.getElementById("stoc-tut-question");
+  const optionsEl = document.getElementById("stoc-tut-options");
+  const formEl = document.getElementById("stoc-tut-quiz-form");
+  const feedbackEl = document.getElementById("stoc-tut-feedback");
+  const xpEl = document.getElementById("stoc-tut-xp");
+  const progressTextEl = document.getElementById("stoc-tut-progress-text");
+  const stepTextEl = document.getElementById("stoc-tut-step-text");
+  const progressBarEl = document.getElementById("stoc-tut-progress-bar");
+  const toastEl = document.getElementById("stoc-tut-toast");
+
+  if (!tabsContainer) return;
+
+  function showToast(message) {
+    toastEl.textContent = message;
+  }
+
+  function refreshProgress() {
+    const total = LESSONS.length;
+    const done = completedLessons.size;
+    const percent = Math.round((done / total) * 100);
+    xpEl.textContent = `${done} / ${total} retos completados`;
+    progressTextEl.textContent = `Progreso de dominio: ${percent}%`;
+    progressBarEl.style.width = `${percent}%`;
+  }
+
+  function loadLesson(index) {
+    currentIndex = index;
+    const lesson = LESSONS[index];
+
+    tabsContainer.querySelectorAll(".stoc-tut-tab").forEach((tab, idx) => {
+      tab.classList.toggle("is-active", idx === index);
+    });
+
+    stepTextEl.textContent = `Módulo ${index + 1} de ${LESSONS.length}`;
+    titleEl.textContent = lesson.title;
+    descEl.textContent = lesson.desc;
+    codeViewerEl.textContent = lesson.code;
+    questionEl.textContent = lesson.question;
+
+    feedbackEl.className = "stoc-tut-feedback";
+    feedbackEl.style.display = "none";
+    feedbackEl.textContent = "";
+    showToast("");
+
+    optionsEl.innerHTML = "";
+    lesson.options.forEach((opt) => {
+      const label = document.createElement("label");
+      label.className = "stoc-tut-option";
+
+      const radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "stoc-tut-choice";
+      radio.value = opt.value;
+
+      const textSpan = document.createElement("span");
+      textSpan.textContent = opt.text;
+
+      label.appendChild(radio);
+      label.appendChild(textSpan);
+      optionsEl.appendChild(label);
+    });
+  }
+
+  tabsContainer.addEventListener("click", (e) => {
+    const btn = e.target.closest(".stoc-tut-tab");
+    if (!btn) return;
+    loadLesson(Number(btn.dataset.lesson));
+  });
+
+  document.getElementById("stoc-tut-btn-copy").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(codeViewerEl.textContent);
+      showToast("Código copiado al portapapeles. Pégalo en tu editor.stoc cuando quieras probarlo.");
+    } catch (_) {
+      showToast("Selecciona el texto del recuadro y presiona Ctrl+C para copiarlo.");
+    }
+  });
+
+  document.querySelectorAll("[data-stoc-preset]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const key = btn.getAttribute("data-stoc-preset");
+      if (key === "base") {
+        codeViewerEl.textContent = LESSONS[currentIndex].code;
+        showToast("Mostrando ejemplo base del módulo actual.");
+      } else if (PRESETS[key]) {
+        codeViewerEl.textContent = PRESETS[key];
+        showToast(`Vista previa cargada: ${btn.textContent.trim()} (tu editor.stoc no fue modificado).`);
+      }
+    });
+  });
+
+  formEl.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const chosen = formEl.querySelector("input[name='stoc-tut-choice']:checked");
+    if (!chosen) {
+      feedbackEl.className = "stoc-tut-feedback is-err";
+      feedbackEl.style.display = "block";
+      feedbackEl.textContent = "Selecciona una opción antes de verificar.";
+      return;
+    }
+
+    const lesson = LESSONS[currentIndex];
+    if (chosen.value === lesson.correct) {
+      completedLessons.add(currentIndex);
+      refreshProgress();
+      feedbackEl.className = "stoc-tut-feedback is-ok";
+      feedbackEl.style.display = "block";
+      feedbackEl.textContent = lesson.explainOk;
+    } else {
+      feedbackEl.className = "stoc-tut-feedback is-err";
+      feedbackEl.style.display = "block";
+      feedbackEl.textContent = "Respuesta incorrecta. Revisa el código de muestra en el panel izquierdo e inténtalo de nuevo.";
+    }
+  });
+
+  document.getElementById("stoc-tut-btn-next").addEventListener("click", () => {
+    const next = (currentIndex + 1) % LESSONS.length;
+    loadLesson(next);
+  });
+
+  refreshProgress();
+  loadLesson(0);
+})();
+</script>
 </body>
 </html>

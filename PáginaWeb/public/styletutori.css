@@ -1,0 +1,248 @@
+.stoc-tut-wrapper {
+  --tut-bg-card: #161b22;
+  --tut-bg-panel: #0d1117;
+  --tut-border: #30363d;
+  --tut-green: #2ea043;
+  --tut-blue: #1f6feb;
+  --tut-red: #f85149;
+  --tut-text: #e6edf3;
+  --tut-muted: #8b949e;
+  background: var(--tut-bg-panel);
+  color: var(--tut-text);
+  border: 1px solid var(--tut-border);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+.stoc-tut-wrapper * {
+  box-sizing: border-box;
+}
+
+.stoc-tut-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stoc-tut-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--tut-text);
+}
+
+.stoc-tut-subtitle {
+  margin: 4px 0 0;
+  color: var(--tut-muted);
+  font-size: 0.9rem;
+}
+
+.stoc-tut-badge {
+  background: rgba(46, 160, 67, 0.15);
+  border: 1px solid var(--tut-green);
+  color: #7ee787;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.stoc-tut-progress-box {
+  margin-bottom: 18px;
+}
+
+.stoc-tut-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--tut-muted);
+  margin-bottom: 6px;
+}
+
+.stoc-tut-progress-track {
+  width: 100%;
+  height: 12px;
+  background: #21262d;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--tut-border);
+}
+
+.stoc-tut-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #238636, #3fb950);
+  transition: width 0.35s ease;
+}
+
+.stoc-tut-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.stoc-tut-tab {
+  background: var(--tut-bg-card);
+  color: var(--tut-text);
+  border: 1px solid var(--tut-border);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.stoc-tut-tab:hover {
+  border-color: var(--tut-blue);
+}
+
+.stoc-tut-tab.is-active {
+  background: var(--tut-blue);
+  border-color: var(--tut-blue);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.stoc-tut-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+}
+
+@media (max-width: 860px) {
+  .stoc-tut-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stoc-tut-card {
+  background: var(--tut-bg-card);
+  border: 1px solid var(--tut-border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.stoc-tut-card h3 {
+  margin-top: 0;
+  font-size: 1.05rem;
+  color: var(--tut-text);
+}
+
+.stoc-tut-code {
+  background: #090c10;
+  border: 1px solid var(--tut-border);
+  border-radius: 8px;
+  padding: 12px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  overflow-x: auto;
+  white-space: pre;
+  color: #c9d1d9;
+  margin: 10px 0;
+}
+
+.stoc-tut-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.stoc-tut-btn {
+  background: #21262d;
+  color: var(--tut-text);
+  border: 1px solid var(--tut-border);
+  padding: 7px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 500;
+}
+
+.stoc-tut-btn:hover {
+  background: #30363d;
+}
+
+.stoc-tut-btn-primary {
+  background: var(--tut-green);
+  border-color: var(--tut-green);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.stoc-tut-btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.stoc-tut-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--tut-bg-panel);
+  border: 1px solid var(--tut-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.stoc-tut-option:hover {
+  border-color: var(--tut-blue);
+}
+
+.stoc-tut-option input[type="radio"] {
+  margin-top: 3px;
+  accent-color: #3fb950;
+}
+
+.stoc-tut-feedback {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  display: none;
+}
+
+.stoc-tut-feedback.is-ok {
+  display: block;
+  background: rgba(46, 160, 67, 0.16);
+  border: 1px solid var(--tut-green);
+  color: #7ee787;
+}
+
+.stoc-tut-feedback.is-err {
+  display: block;
+  background: rgba(248, 81, 73, 0.15);
+  border: 1px solid var(--tut-red);
+  color: #ffa198;
+}
+
+.stoc-tut-visual {
+  margin-top: 14px;
+  border-top: 1px solid var(--tut-border);
+  padding-top: 12px;
+}
+
+.stoc-tut-visual img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--tut-border);
+  display: block;
+  margin-top: 8px;
+}
+
+.stoc-tut-toast {
+  margin-top: 10px;
+  font-size: 0.84rem;
+  color: #79c0ff;
+  min-height: 20px;
+}
